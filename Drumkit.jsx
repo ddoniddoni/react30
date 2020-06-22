@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Drumkit.css";
 
 const Drumkit = () => {
+  const [value, setValue] = useState(0);
+
   return (
     <>
-      <div className="aa">Drumkit 초기 설정</div>
+      <div>{value}</div>
+      <button onClick={() => setValue(value + 1)}> +1</button>
+      <button onClick={() => setValue(value - 1)}> -1</button>
     </>
   );
 };
