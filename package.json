@@ -4,7 +4,7 @@
   "description": "Convert js30 to react30",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "webpack-dev-server --hot"
   },
   "repository": {
     "type": "git",
