@@ -5,7 +5,7 @@ module.exports = {
   mode: "development", // 실서비스 : production
   devtool: "eval",
   resolve: {
-    extensions: [".js", ".jsx"],
+    extensions: [".js", ".jsx", ".css"],
   },
 
   entry: {
@@ -32,6 +32,10 @@ module.exports = {
           ],
           plugins: ["@babel/plugin-proposal-class-properties", "react-hot-loader/babel"],
         },
+      },
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"],
       },
     ],
   },
