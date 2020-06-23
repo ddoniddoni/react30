@@ -15,8 +15,9 @@ const Home = () => {
     e.preventDefault();
     setTodos([...todos, newTodo]);
   };
+
   useEffect(() => {
-    console.log("새로운 내용이 렌더링!");
+    console.log("새로운 내용이 렌더링됐네요", todos);
   }, [todos]);
 
   return (
@@ -24,7 +25,7 @@ const Home = () => {
       <h1>Todo App</h1>
 
       <form action="">
-        <input type="text" name="" onChange={changeInputData} />
+        <input className="input" type="text" name="" onChange={changeInputData} />
         <button onClick={addTodo}>할일추가</button>
       </form>
       <List todos={todos} />
