@@ -16,16 +16,22 @@ export const Index = () => {
   return (
     <>
       <div className="keys">
-        <Drumkit data-key="65" kbd={"A"} sound={"clap"} src={clap} />
-        <Drumkit data-key="83" kbd={"S"} sound={"hihat"} src={hihat} />
-        <Drumkit data-key="68" kbd={"D"} sound={"kick"} src={kick} />
-        <Drumkit data-key="70" kbd={"F"} sound={"openhat"} src={openhat} />
-        <Drumkit data-key="71" kbd={"G"} sound={"boom"} src={boom} />
-        <Drumkit data-key="72" kbd={"H"} sound={"ride"} src={ride} />
-        <Drumkit data-key="74" kbd={"J"} sound={"snare"} src={snare} />
-        <Drumkit data-key="75" kbd={"K"} sound={"tom"} src={tom} />
-        <Drumkit data-key="76" kbd={"L"} sound={"tink"} src={tink} />
+        <Drumkit a="65" kbd="A" sound="clap" src={clap} />
+        <Drumkit a="83" kbd="S" sound="hithat" src={hihat} />
+        <Drumkit a="68" kbd="D" sound="kick" src={kick} />
+        <Drumkit a="70" kbd="F" sound="openhat" src={openhat} />
+        <Drumkit a="71" kbd="G" sound="boom" src={boom} />
+        <Drumkit a="72" kbd="H" sound="ride" src={ride} />
+        <Drumkit a="74" kbd="J" sound="snare" src={snare} />
+        <Drumkit a="75" kbd="K" sound="tom" src={tom} />
+        <Drumkit a="76" kbd="L" sound="tink" src={tink} />
       </div>
+
+      {/* <div data-key="65" className="key">
+        <kbd>A</kbd>
+        <span className="sound">clap</span>
+      </div>
+      <audio data-key="65" src="sounds/clap.wav"></audio> */}
     </>
   );
 };

@@ -1,25 +1,30 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import "./drumkit.css";
 
 export const Drumkit = (data) => {
-  const [isPlaying, setIsPlaying] = useState(false);
-
-  const playSound = (e) => {
-    const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
-    console.log("어려워..", key);
-  };
-
   useEffect(() => {
-    window.addEventListener("keydown", playSound);
-  }, []);
+    const handleKeyDown = (e) => {
+      const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+      const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
+      if (!audio) return;
+      audio.currentTime = 0;
+      audio.play();
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  });
 
   return (
     <>
-      <div data-key={data.datakey} className="key">
+      <div data-key={data.a} className="key">
         <kbd>{data.kbd}</kbd>
         <span className="sound">{data.sound}</span>
       </div>
-      <audio data-key={data.datakey} src={data.src}></audio>
+      <audio data-key={data.a} src={data.src}></audio>
     </>
   );
 };
