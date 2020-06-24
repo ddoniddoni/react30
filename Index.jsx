@@ -3,26 +3,24 @@ import Drumkit from "./Drumkit";
 import "./drumkit.css";
 
 export const Index = () => {
-  const playSound = (e) => {
-    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
-    const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
-    if (!audio) return;
-    key.classList.add("playing");
-    audio.currentTime = 0;
-    audio.play();
-  };
+  const [datakey, setDatakey] = useState();
+  const [className, setClassName] = useState();
+  const [kbd, setKbd] = useState();
+  const [sound, setSound] = useState();
 
-  const removeTransition = (e) => {
-    if (e.propertyName !== "transform") return;
-    e.target.classList.remove("playing");
-  };
-
-  const keys = Array.from(document.querySelectorAll(".key"));
-  keys.forEach((key) => key.addEventListener("transitionend", removeTransition));
-  window.addEventListener("keydown", playSound);
   return (
     <>
-      <Drumkit />
+      <div className="keys">
+        <Drumkit data-key={65} className={"key"} kbd={"A"} sound={"clap"} />
+        <Drumkit data-key={83} className={"key"} kbd={"S"} sound={"hihat"} />
+        <Drumkit data-key={68} className={"key"} kbd={"D"} sound={"kick"} />
+        <Drumkit data-key={70} className={"key"} kbd={"F"} sound={"openhat"} />
+        <Drumkit data-key={71} className={"key"} kbd={"G"} sound={"boom"} />
+        <Drumkit data-key={72} className={"key"} kbd={"H"} sound={"ride"} />
+        <Drumkit data-key={74} className={"key"} kbd={"J"} sound={"snare"} />
+        <Drumkit data-key={75} className={"key"} kbd={"K"} sound={"tom"} />
+        <Drumkit data-key={76} className={"key"} kbd={"L"} sound={"tink"} />
+      </div>
     </>
   );
 };
