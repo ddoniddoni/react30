@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDom from "react-dom";
 import { hot } from "react-hot-loader/root";
-import Index from "./Index";
+import Home from "./Home";
 
-const Hot = hot(Index);
+const Hot = hot(Home);
 
 ReactDom.render(<Hot />, document.querySelector("#root"));
