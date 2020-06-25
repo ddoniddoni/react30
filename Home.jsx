@@ -1,22 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import "./styles.css";
+import { Counter } from "./Counter";
+import { Info } from "./Info";
 
 const Home = () => {
-  const [value, setValue] = useState(0);
+  const [visible, setVisible] = useState(false);
 
-  const plusValue = () => {
-    setValue(value + 1);
-  };
-
-  const minusValue = () => {
-    setValue(value - 1);
-  };
   return (
     <>
       <div>
-        <p>{value}</p>
-        <button onClick={plusValue}>+</button>
-        <button onClick={minusValue}>-</button>
+        <button
+          onClick={() => {
+            setVisible(!visible);
+          }}
+        >
+          {visible ? "숨기기" : "보이기"}
+        </button>
+        <hr />
       </div>
+      {visible && <Counter />}
+      {visible && <Info />}
     </>
   );
 };
