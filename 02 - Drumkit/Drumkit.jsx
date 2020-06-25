@@ -1,11 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./drumkit.css";
 
 export const Drumkit = (data) => {
   useEffect(() => {
     const handleKeyDown = (e) => {
       const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
-      const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
       if (!audio) return;
       audio.currentTime = 0;
       audio.play();
@@ -28,5 +27,4 @@ export const Drumkit = (data) => {
     </>
   );
 };
-
 export default Drumkit;
