@@ -1,9 +1,11 @@
 import React from "react";
-
-export const Home = () => {
+import "./styles.css";
+import { Calculator } from "./Calculator";
+const Home = () => {
   return (
     <div>
-      <p>Hello^^</p>
+      <Calculator />
     </div>
   );
 };
+export default Home;
