@@ -1,14 +1,36 @@
 @import "reset.css";
 
 .wrapper {
-  display: row;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vh;
+}
+
+.wrapper__cal {
   justify-content: center;
   text-align: center;
-  margin-top: 30px;
+  align-items: center;
+  border: 2px solid #0f0f0f;
+  width: 300px;
+  height: 500px;
+  top: 50%;
+  left: 50%;
 }
 
 .input {
   width: 250px;
+  height: 40px;
+  font-size: 20px;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+.result {
+  font: 20px;
+  font-weight: 600;
+  margin-bottom: 15px;
 }
 
 .button {
@@ -19,6 +41,7 @@
 }
 
 .clear {
-  width: 250px;
+  width: 260px;
   font-size: 20px;
+  margin-top: 20px;
 }
