@@ -1,9 +1,10 @@
 import React from "react";
 import "./styles.css";
+import { KeyCode } from "./KeyCode";
 const Home = () => {
   return (
     <>
-      <div>안녕하세요~!</div>
+      <KeyCode />
     </>
   );
 };
