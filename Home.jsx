@@ -1,11 +1,6 @@
 import React from "react";
 import "./styles.css";
-import { Calculator } from "./Calculator";
 const Home = () => {
-  return (
-    <div>
-      <Calculator />
-    </div>
-  );
+  return <div>안녕하세요~!</div>;
 };
 export default Home;
