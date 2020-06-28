@@ -7,10 +7,11 @@ export const KeyCode = () => {
   const [eventCode, setEventCode] = useState("");
 
   const pressKeydown = (e) => {
-    console.log(e);
     setName(e.key);
     setCode(e.keyCode);
     setEventCode(e.code);
+
+    e.returnValue = false;
   };
 
   useEffect(() => {
