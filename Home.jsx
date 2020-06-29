@@ -1,10 +1,10 @@
 import React from "react";
 import "./styles.css";
-import { KeyCode } from "./KeyCode";
+import { Weather } from "./Weather";
 const Home = () => {
   return (
     <>
-      <KeyCode />
+      <Weather />
     </>
   );
 };
