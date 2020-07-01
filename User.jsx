@@ -3,29 +3,24 @@ import "./styles.css";
 import axios from "axios";
 import { useAsync } from "./useAsync";
 
-const getUsers = async () => {
-  const response = await axios.get("https://jsonplaceholder.typicode.com/users");
+const getUser = async (id) => {
+  const response = await axios.get(`https://jsonplaceholder.typicode.com/users/${id}`);
   return response.data;
 };
 
-export const User = () => {
-  const [state, refetch] = useAsync(getUsers, []);
-
-  const { loading, data: users, error } = state;
+export const User = ({ id }) => {
+  const [state] = useAsync(() => getUser(id), [id]);
+  const { loading, data: user, error } = state;
 
   if (loading) return <div className="loading">로딩중</div>;
   if (error) return <div className="error">에러가 발생</div>;
-  if (!users) return null;
+  if (!user) return null;
   return (
     <>
-      <ul>
-        {users.map((user) => (
-          <li key={user.id}>
-            {user.username} ({user.name})
-          </li>
-        ))}
-      </ul>
-      <button onClick={refetch}>다시 불러오기</button>
+      <h2>{user.username}</h2>
+      <p>
+        <b>Email:</b> {user.email}
+      </p>
     </>
   );
 };
