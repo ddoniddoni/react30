@@ -1,10 +1,10 @@
 import React from "react";
 import "./styles.css";
-import { Weather } from "./Weather";
+import { User } from "./User";
 const Home = () => {
   return (
     <>
-      <Weather />
+      <User />
     </>
   );
 };
