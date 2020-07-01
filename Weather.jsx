@@ -1,25 +1,40 @@
 import React, { useState, useEffect } from "react";
 import "./styles.css";
 import axios from "axios";
-import useGeolocation from "react-hook-geolocation";
 
-const API_KEY = "d8395d193557f6d8cb03d38b69442b17";
 export const Weather = () => {
-  const [temps, setTemps] = useState([]);
-  const geolocation = useGeolocation();
+  const [users, setUsers] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    console.log(geolocation.latitude);
-    axios
-      .get(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${37.56667}&lon=${126.97806}&appid=${API_KEY}&units=metric`
-      )
-      .then(({ data }) => setTemps(data));
+    const fetchUsers = async () => {
+      try {
+        setError(null);
+        setUsers(null);
+        setLoading(true);
+        const response = await axios.get(`https://jsonplaceholder.typicode.com/users`);
+        setUsers(response.data);
+      } catch (e) {
+        setError(e);
+      }
+      setLoading(false);
+    };
+    fetchUsers();
   }, []);
-  console.log(temps);
+
+  if (loading) return <div>...로딩중</div>;
+  if (error) return <div>에러가 발생</div>;
+  if (!users) return null;
   return (
     <>
-      <div>{geolocation.latitude}</div>
+      <ul>
+        {users.map((user) => (
+          <li key={user.id}>
+            {user.username} ({user.name})
+          </li>
+        ))}
+      </ul>
     </>
   );
 };

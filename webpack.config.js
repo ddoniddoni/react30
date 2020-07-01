@@ -9,7 +9,7 @@ module.exports = {
   },
 
   entry: {
-    app: ["./client"],
+    app: ["babel-polyfill", "./client"],
   }, // 입력
 
   module: {
