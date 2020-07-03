@@ -1,11 +1,10 @@
 import React from "react";
 import "./styles.css";
-import { User } from "./User";
-import { Users } from "./Users";
+import { InputSample } from "./InputSample";
 const Home = () => {
   return (
     <>
-      <Users />
+      <InputSample />
     </>
   );
 };
