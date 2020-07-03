@@ -27,8 +27,8 @@ const Home = () => {
     },
     {
       id: 2,
-      username: "tester",
-      email: "tester@example.com",
+      username: "okman",
+      email: "Okman@example.com",
     },
     {
       id: 3,
@@ -37,7 +37,7 @@ const Home = () => {
     },
   ]);
 
-  const nextId = useRef(4);
+  const nextId = useRef(4); // id값이 1,2,3 이미 설정 4부터 시작
 
   const onCreate = () => {
     const user = {
@@ -51,13 +51,20 @@ const Home = () => {
     setInputs({
       username: "",
       email: "",
-    });
-    nextId.current += 1;
+    }); // 계정 등록후 빈값으로 다시 설정
+    nextId.current += 1; //ID값 올리기
   };
+
+  const onRemove = (id) => {
+    //user.id가 파라미터로 일치하지 않는 원소만 추출
+    // = user.id가 id 인 것을 제거함
+    setUsers(users.filter((user) => user.id !== id));
+  };
+
   return (
     <>
       <CreateUser username={username} email={email} onChange={onChange} onCreate={onCreate} />
-      <UserList users={users} />
+      <UserList users={users} onRemove={onRemove} />
     </>
   );
 };
