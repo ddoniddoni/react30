@@ -1,9 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 const User = ({ user, onRemove, onToggle }) => {
-  useEffect(() => {
-    console.log(user);
-  });
   return (
     <div className="wrapper">
       <span
