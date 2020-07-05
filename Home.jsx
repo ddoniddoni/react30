@@ -52,6 +52,7 @@ const Home = () => {
       id: nextId.current,
       username,
       email,
+      active: false,
     };
 
     setUsers(users.concat(user));
@@ -70,13 +71,22 @@ const Home = () => {
   };
 
   const onToggle = (id) => {
-    setUsers(users.map((user) => (user.id === id ? { ...user, active: !user.active } : user)));
+    setUsers(
+      users.map((user) =>
+        user.id === id ? { ...user, active: !user.active } : user
+      )
+    );
   };
   const count = countActiveUsers(users);
 
   return (
     <>
-      <CreateUser username={username} email={email} onChange={onChange} onCreate={onCreate} />
+      <CreateUser
+        username={username}
+        email={email}
+        onChange={onChange}
+        onCreate={onCreate}
+      />
       <UserList users={users} onRemove={onRemove} onToggle={onToggle} />
       <div>활성 사용자 수 : {count}</div>
     </>
