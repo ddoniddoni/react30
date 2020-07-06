@@ -1,4 +1,4 @@
-import React, { useRef, useState, useMemo } from "react";
+import React, { useRef, useState, useMemo, useCallback } from "react";
 import "./styles.css";
 import { UserList } from "./UserList";
 import { CreateUser } from "./CreateUser";
@@ -16,13 +16,16 @@ const Home = () => {
 
   const { username, email } = inputs;
 
-  const onChange = (e) => {
-    const { name, value } = e.target;
-    setInputs({
-      ...inputs,
-      [name]: value,
-    });
-  };
+  const onChange = useCallback(
+    (e) => {
+      const { name, value } = e.target;
+      setInputs({
+        ...inputs,
+        [name]: value,
+      });
+    },
+    [inputs]
+  );
 
   const [users, setUsers] = useState([
     {
@@ -47,7 +50,7 @@ const Home = () => {
 
   const nextId = useRef(4); // id값이 1,2,3 이미 설정 4부터 시작
 
-  const onCreate = () => {
+  const onCreate = useCallback(() => {
     const user = {
       id: nextId.current,
       username,
@@ -62,13 +65,16 @@ const Home = () => {
       email: "",
     }); // 계정 등록후 빈값으로 다시 설정
     nextId.current += 1; //ID값 올리기
-  };
+  }, [users, username, email]);
 
-  const onRemove = (id) => {
-    //user.id가 파라미터로 일치하지 않는 원소만 추출
-    // = user.id가 id 인 것을 제거함
-    setUsers(users.filter((user) => user.id !== id));
-  };
+  const onRemove = useCallback(
+    (id) => {
+      //user.id가 파라미터로 일치하지 않는 원소만 추출
+      // = user.id가 id 인 것을 제거함
+      setUsers(users.filter((user) => user.id !== id));
+    },
+    [users]
+  );
 
   const onToggle = (id) => {
     setUsers(
