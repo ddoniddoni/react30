@@ -43,7 +43,7 @@ const initialState = {
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case "CAHNGE_INPUT":
+    case "CHANGE_INPUT":
       return {
         ...state,
         inputs: {
