@@ -36,7 +36,7 @@ const CircleButton = styled.button`
     css`
       background: #ff6b6b;
       &:hover {
-        background: #ff8787;
+        background: #ffff87;
       }
       &:active {
         background: #fa5252;
